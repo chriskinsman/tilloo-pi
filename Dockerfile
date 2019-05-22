@@ -1,4 +1,4 @@
 #
 # ---- Base Node ----
-FROM tilloo/k8s:104
+FROM tilloo/k8s:latest
 COPY config.json /tilloo/config.json
