@@ -14,6 +14,7 @@ This repository provides samples to:
 5. tilloo/k8s:latest is a multi-architecture manifest that includes amd64 and arm32v6 images. 
 6. You will need to build both amd64 and arm32v6 images of tilloo and push them to a repository.  You will need to replace my repository 'chriskinsman' with yours.
 7. You will need to modify tilloo.yaml to point at the images in your repository instead of mine.
+8. You will need to add a /etc/hosts entry for tilloo.local.  This is due to the nginx ingress using host headers.  If you hit it's cluster ip without a host header you will end up with a 404 not found.
 
 Steps are intended to be run in numerical order.
 
