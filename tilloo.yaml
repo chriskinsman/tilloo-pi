@@ -63,7 +63,7 @@ metadata:
   name: scheduler-service
   namespace: tilloo-services
 spec:
-  type: NodePort
+  # type: NodePort
   ports:
   - port: 80
     targetPort: 80
@@ -93,7 +93,7 @@ spec:
       serviceAccountName: tilloo-admin
       containers:
       - name: scheduler
-        image: chriskinsman/rpi-tilloo:arm
+        image: chriskinsman/rpi-tilloo:latest
         env:
         - name: DEBUG
           value: tilloo:*
@@ -109,7 +109,7 @@ metadata:
   name: web-service
   namespace: tilloo-services
 spec:
-  type: NodePort
+  # type: NodePort
   ports:
   - port: 80
     targetPort: 80
@@ -139,7 +139,7 @@ spec:
       serviceAccountName: tilloo-admin
       containers:
       - name: web
-        image: chriskinsman/rpi-tilloo:arm
+        image: chriskinsman/rpi-tilloo:latest
         env:
         - name: DEBUG
           value: tilloo:*
@@ -171,7 +171,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: logger
-        image: chriskinsman/rpi-tilloo:arm
+        image: chriskinsman/rpi-tilloo:latest
         env:
         - name: DEBUG
           value: tilloo:*
@@ -206,11 +206,11 @@ spec:
     - host: tilloo.local
       http:
         paths:
-          - path: /socket.io/*
+          - path: /socket.io/
             backend:
               serviceName: scheduler-service
               servicePort: 80
-          - path: /*
+          - path: /
             backend:
               serviceName: web-service
               servicePort: 80
